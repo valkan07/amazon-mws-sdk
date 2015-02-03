@@ -1,0 +1,18 @@
+{
+    "name": "valkan07/amazon-mws-sdk",
+    "description": "AmazonMws",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Valentin",
+            "email": "kvalik@gmail.com"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "classmap": [ "lib/" ]
+    },
+    "include-path": ["lib/"]
+}
