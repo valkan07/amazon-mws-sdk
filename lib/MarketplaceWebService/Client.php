@@ -868,7 +868,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
   /**
    * Look for additional error strings in the response and return formatted exception
    */
-  private function reportAnyErrors($responseBody, $status, Exception $e =  null, $metadata)
+  private function reportAnyErrors($responseBody, $status, Exception $e =  null, $responseHeaderMetadata = null)
   {
     $exProps = array();
     $exProps["StatusCode"] = $status;
@@ -1019,7 +1019,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
   	
   	// For unsuccessful responses, i.e. non-200 HTTP responses, we write the response body
   	// into a separate stream.
-  	$responseHandle;
+  	$responseHandle = null;
   	if ($httpStatusCode == 200) {
   		$responseHandle = $this->responseBodyContents;
   	} else {
