@@ -28,6 +28,7 @@ interface  MWSSubscriptionsService_Interface
      * @see MWSSubscriptionsService_Model_CreateSubscriptionInput
      * @return MWSSubscriptionsService_Model_CreateSubscriptionResponse
      *
+     *
      * @throws MWSSubscriptionsService_Exception
      */
     public function createSubscription($request);
