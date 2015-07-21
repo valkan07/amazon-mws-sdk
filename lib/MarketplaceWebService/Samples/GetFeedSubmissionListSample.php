@@ -20,7 +20,7 @@
  * Get Feed Submission List  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -94,12 +94,14 @@ $config = array (
 //$parameters = array (
 //  'Merchant' => MERCHANT_ID,
 //  'FeedProcessingStatusList' => array ('Status' => array ('_SUBMITTED_')),
+//  'MWSAuthToken' => '<MWS Auth Token>', // Optional
 //);
 //
 //$request = new MarketplaceWebService_Model_GetFeedSubmissionListRequest($parameters);
 
 //$request = new MarketplaceWebService_Model_GetFeedSubmissionListRequest();
 //$request->setMerchant(MERCHANT_ID);
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 //
 //$statusList = new MarketplaceWebService_Model_StatusList();
 //$request->setFeedProcessingStatusList($statusList->withStatus('_SUBMITTED_'));

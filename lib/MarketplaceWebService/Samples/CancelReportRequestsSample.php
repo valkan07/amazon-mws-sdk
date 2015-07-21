@@ -19,7 +19,7 @@
  * Cancel Reports  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -94,12 +94,14 @@ $config = array (
 //$parameters = array (
 //  'Merchant' => MERCHANT_ID,
 //  'ReportRequestIdList' => array ( 'Id' => array ('4309077944', '4309077934')),
+//  'MWSAuthToken' => '<MWS Auth Token>', // Optional
 //);
 //
 //$request = new MarketplaceWebService_Model_CancelReportRequestsRequest($parameters);
 
 //$request = new MarketplaceWebService_Model_CancelReportRequestsRequest();
 //$request->setMerchant(MERCHANT_ID);
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 //
 //$idList = new MarketplaceWebService_Model_IdList();
 //$request->setReportRequestIdList($idList->withId('4309077944', '4309077934'));

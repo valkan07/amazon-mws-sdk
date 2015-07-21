@@ -20,7 +20,7 @@
  * Get Report Count  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -95,6 +95,7 @@ $config = array (
 //  'Merchant' => MERCHANT_ID,
 //  'AvailableFromDate' => new DateTime('-6 months', new DateTimeZone('UTC')),
 //  'AvailableToDate' => new DateTime('-3 months', new DateTimeZone('UTC')),
+//  'MWSAuthToken' => '<MWS Auth Token>', // Optional
 //);
 //
 //$request = new MarketplaceWebService_Model_GetReportCountRequest($parameters);
@@ -103,6 +104,7 @@ $config = array (
 //$request->setMerchant(MERCHANT_ID);
 //$request->setAvailableFromDate(new DateTime('-6 months', new DateTimeZone('UTC')));
 //$request->setAvailableToDate(new DateTime('now', new DateTimeZone('UTC')));
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 //
 //invokeGetReportCount($service, $request);
 

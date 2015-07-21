@@ -20,7 +20,7 @@
  * Submit Feed  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -144,6 +144,7 @@ EOD;
 //  'FeedContent' => $feedHandle,
 //  'PurgeAndReplace' => false,
 //  'ContentMd5' => base64_encode(md5(stream_get_contents($feedHandle), true)),
+//  'MWSAuthToken' => '<MWS Auth Token>', // Optional
 //);
 
 //rewind($feedHandle);
@@ -164,6 +165,7 @@ EOD;
 //rewind($feedHandle);
 //$request->setPurgeAndReplace(false);
 //$request->setFeedContent($feedHandle);
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 
 //rewind($feedHandle);
 /********* End Comment Block *********/

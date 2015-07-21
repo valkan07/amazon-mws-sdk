@@ -19,7 +19,7 @@
  * Cancel Feed Submissions  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -94,6 +94,7 @@ $config = array (
 //$options = array (
 //  'Merchant' => MERCHANT_ID,
 //  'FeedSubmissionIdList' => array ('Id' => '<Feed Submission Id>'),
+//  'MWSAuthToken' => '<MWS Auth Token>', // Optional
 //);
 //
 //$request = new MarketplaceWebService_Model_CancelFeedSubmissionsRequest($options);
@@ -104,6 +105,7 @@ $config = array (
 //
 //$idList = new MarketplaceWebService_Model_IdList();
 //$request->setFeedSubmissionIdList($idList->withId('<Feed Submission Id>'));
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 // 
 invokeCancelFeedSubmissions($service, $request);
                                                     

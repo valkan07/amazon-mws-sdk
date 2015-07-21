@@ -20,7 +20,7 @@
  * Get Feed Submission Result  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -91,18 +91,20 @@ $config = array (
  // @TODO: set request. Action can be passed as MarketplaceWebService_Model_GetFeedSubmissionResultRequest
  // object or array of parameters
  
-$parameters = array (
-  'Merchant' => MERCHANT_ID,
-  'FeedSubmissionId' => '<Feed Submission Id>',
-  'FeedSubmissionResult' => @fopen('php://memory', 'rw+'),
-);
+//$parameters = array (
+//  'Merchant' => MERCHANT_ID,
+//  'FeedSubmissionId' => '<Feed Submission Id>',
+//  'FeedSubmissionResult' => @fopen('php://memory', 'rw+'),
+//  'MWSAuthToken' => '<MWS Auth Token>', // Optional
+//);
+//
+//$request = new MarketplaceWebService_Model_GetFeedSubmissionResultRequest($parameters);
 
-$request = new MarketplaceWebService_Model_GetFeedSubmissionResultRequest($parameters);
-
-$request = new MarketplaceWebService_Model_GetFeedSubmissionResultRequest();
-$request->setMerchant(MERCHANT_ID);
-$request->setFeedSubmissionId('<Feed Submission Id>');
-$request->setFeedSubmissionResult(@fopen('php://memory', 'rw+'));
+//$request = new MarketplaceWebService_Model_GetFeedSubmissionResultRequest();
+//$request->setMerchant(MERCHANT_ID);
+//$request->setFeedSubmissionId('<Feed Submission Id>');
+//$request->setFeedSubmissionResult(@fopen('php://memory', 'rw+'));
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
      
 //invokeGetFeedSubmissionResult($service, $request);
 

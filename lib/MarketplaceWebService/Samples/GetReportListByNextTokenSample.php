@@ -20,7 +20,7 @@
  * Get Report List By Next Token  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -96,6 +96,7 @@ $config = array (
 //$parameters = array (
 //  'Merchant' => MERCHANT_ID,
 //  'NextToken' => $nextToken,
+//  'MWSAuthToken' => '<MWS Auth Token>', // Optional
 //);
 //
 //$request = new MarketplaceWebService_Model_GetReportListByNextTokenRequest($parameters);
@@ -103,6 +104,7 @@ $config = array (
 //$request = new MarketplaceWebService_Model_GetReportListByNextTokenRequest();
 //$request->setMerchant(MERCHANT_ID);
 //$request->setNextToken($nextToken);
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 //
 //invokeGetReportListByNextToken($service, $request);
 

@@ -20,7 +20,7 @@
  * Update Report Acknowledgements  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -97,6 +97,7 @@ $config = array (
 //  'Merchant' => MERCHANT_ID,
 //  'ReportIdList' => array ('Id' => array ($reportId)),
 //  'Acknowledged' => true,
+//  'MWSAuthToken' => '<MWS Auth Token>', // Optional
 //);
 //
 //$request = new MarketplaceWebService_Model_UpdateReportAcknowledgementsRequest($parameters);
@@ -107,6 +108,7 @@ $config = array (
 //$idList = new MarketplaceWebService_Model_IdList();
 //$request->setReportIdList($idList->withId($reportId));
 //$request->setAcknowledged(false);
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 //     
 //invokeUpdateReportAcknowledgements($service, $request);
 

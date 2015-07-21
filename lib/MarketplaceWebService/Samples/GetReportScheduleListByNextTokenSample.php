@@ -20,7 +20,7 @@
  * Get Report Schedule List By Next Token  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -94,6 +94,7 @@ $config = array (
 //$parameters = array (
 //  'Merchant' => MERCHANT_ID,
 //  'NextToken' => '<Next Token Returned by GetReportScheduleList>',
+//  'MWSAuthToken' => '<MWS Auth Token>', // Optional
 //);
 //
 //$request = new MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest($parameters);
@@ -101,6 +102,7 @@ $config = array (
 //$request = new MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest();
 //$request->setMerchant(MERCHANT_ID);
 //$request->setNextToken('<Next Token Returned by GetReportScheduleList>');
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 //
 //invokeGetReportScheduleListByNextToken($service, $request);
 

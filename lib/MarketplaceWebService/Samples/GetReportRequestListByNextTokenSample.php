@@ -20,7 +20,7 @@
  * Get Report List  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -96,12 +96,14 @@ $config = array (
 // $parameters = array (
 //   'Merchant' => MERCHANT_ID,
 //   'NextToken' => $nextToken,
+//   'MWSAuthToken' => '<MWS Auth Token>', // Optional
 // );
 // $request = new MarketplaceWebService_Model_GetReportRequestListByNextTokenRequest($parameters);
  
 // $request = new MarketplaceWebService_Model_GetReportRequestListByNextTokenRequest();
 // $request->setMerchant(MERCHANT_ID);
 // $request->setNextToken($nextToken);
+// $request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 // 
 // invokeGetReportRequestListByNextToken($service, $request);
 
@@ -159,6 +161,13 @@ $config = array (
                               echo("                    EndDate\n");
                               echo("                        " . $reportRequestInfo->getEndDate()->format(DATE_FORMAT) . "\n");
                           }
+                          // add start
+                          if ($reportRequestInfo->isSetScheduled()) 
+                          {
+                              echo("                    Scheduled\n");
+                              echo("                        " . $reportRequestInfo->getScheduled() . "\n");
+                          }
+                          // add end
                           if ($reportRequestInfo->isSetSubmittedDate()) 
                           {
                               echo("                    SubmittedDate\n");
@@ -169,6 +178,23 @@ $config = array (
                               echo("                    ReportProcessingStatus\n");
                               echo("                        " . $reportRequestInfo->getReportProcessingStatus() . "\n");
                           }
+                          // add start
+                          if ($reportRequestInfo->isSetGeneratedReportId()) 
+                          {
+                              echo("                    GeneratedReportId\n");
+                              echo("                        " . $reportRequestInfo->getGeneratedReportId() . "\n");
+                          }
+                          if ($reportRequestInfo->isSetStartedProcessingDate()) 
+                          {
+                              echo("                    StartedProcessingDate\n");
+                              echo("                        " . $reportRequestInfo->getStartedProcessingDate()->format(DATE_FORMAT) . "\n");
+                          }
+                          if ($reportRequestInfo->isSetCompletedDate()) 
+                          {
+                              echo("                    CompletedDate\n");
+                              echo("                        " . $reportRequestInfo->getCompletedDate()->format(DATE_FORMAT) . "\n");
+                          }
+                          // add end
                     }
                 } 
                 if ($response->isSetResponseMetadata()) { 

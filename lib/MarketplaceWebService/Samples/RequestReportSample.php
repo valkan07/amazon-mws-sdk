@@ -20,7 +20,7 @@
  * Report  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -100,6 +100,7 @@ $marketplaceIdArray = array("Id" => array('<Marketplace_Id_1>','<Marketplace_Id_
 //   'MarketplaceIdList' => $marketplaceIdArray,
 //   'ReportType' => '_GET_MERCHANT_LISTINGS_DATA_',
 //   'ReportOptions' => 'ShowSalesChannel=true',
+//   'MWSAuthToken' => '<MWS Auth Token>', // Optional
 // );
  
 // $request = new MarketplaceWebService_Model_RequestReportRequest($parameters);
@@ -108,6 +109,7 @@ $marketplaceIdArray = array("Id" => array('<Marketplace_Id_1>','<Marketplace_Id_
 // $request->setMarketplaceIdList($marketplaceIdArray);
 // $request->setMerchant(MERCHANT_ID);
 // $request->setReportType('_GET_MERCHANT_LISTINGS_DATA_');
+// $request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 
 // Using ReportOptions
 // $request->setReportOptions('ShowSalesChannel=true');

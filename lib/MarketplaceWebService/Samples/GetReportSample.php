@@ -20,7 +20,7 @@
  * Get Report  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -96,6 +96,7 @@ $config = array (
 //   'Merchant' => MERCHANT_ID,
 //   'Report' => @fopen('php://memory', 'rw+'),
 //   'ReportId' => $reportId,
+//   'MWSAuthToken' => '<MWS Auth Token>', // Optional
 // );
 // $request = new MarketplaceWebService_Model_GetReportRequest($parameters);
 
@@ -103,6 +104,7 @@ $config = array (
 //$request->setMerchant(MERCHANT_ID);
 //$request->setReport(@fopen('php://memory', 'rw+'));
 //$request->setReportId($reportId);
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
  
 invokeGetReport($service, $request);
 

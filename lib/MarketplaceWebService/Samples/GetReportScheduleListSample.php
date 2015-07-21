@@ -20,7 +20,7 @@
  * Get Report Schedule List  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -94,12 +94,14 @@ $config = array (
 //$parameters = array (
 //  'Merchant' => MERCHANT_ID,
 //  'ReportTypeList' => array ('Type' => array ('_GET_ORDERS_DATA_', '_GET_FLAT_FILE_ORDERS_DATA_')),
+//  'MWSAuthToken' => '<MWS Auth Token>', // Optional
 //);     
 //
 //$request = new MarketplaceWebService_Model_GetReportScheduleListRequest($parameters);
 
 //$request = new MarketplaceWebService_Model_GetReportScheduleListRequest();
 //$request->setMerchant(MERCHANT_ID);
+//$request->setMWSAuthToken('<MWS Auth Token>'); // Optional
 //
 //$typeList = new MarketplaceWebService_Model_TypeList();
 //$request->setReportTypeList($typeList->withType('_GET_ORDERS_DATA_', '_GET_FLAT_FILE_ORDERS_DATA_'));

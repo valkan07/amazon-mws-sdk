@@ -20,7 +20,7 @@
  * Get Report List  Sample
  */
 
-include_once('.config.inc.php');
+include_once ('.config.inc.php'); 
 
 /************************************************************************
 * Uncomment to configure the client instance. Configuration settings
@@ -95,6 +95,7 @@ $config = array (
 //   'AvailableToDate' => new DateTime('now', new DateTimeZone('UTC')),
 //   'AvailableFromDate' => new DateTime('-6 months', new DateTimeZone('UTC')),
 //   'Acknowledged' => false, 
+//   'MWSAuthToken' => '<MWS Auth Token>', // Optional
 // );
 // 
 // $request = new MarketplaceWebService_Model_GetReportListRequest($parameters);
@@ -104,6 +105,7 @@ $config = array (
 // $request->setAvailableToDate(new DateTime('now', new DateTimeZone('UTC')));
 // $request->setAvailableFromDate(new DateTime('-3 months', new DateTimeZone('UTC')));
 // $request->setAcknowledged(false);
+// $request->setMWSAuthToken('<MWS Auth Token>'); // Optional
  
 // invokeGetReportList($service, $request);
                                                                     
