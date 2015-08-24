@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2014 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2015 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,15 +13,15 @@
  * @category Amazon
  * @package  Marketplace Web Service Orders
  * @version  2013-09-01
- * Library Version: 2014-10-20
- * Generated: Fri Oct 17 15:31:59 GMT 2014
+ * Library Version: 2015-06-18
+ * Generated: Thu Jun 18 19:28:12 GMT 2015
  */
 
 /**
  *  @see MarketplaceWebServiceOrders_Model
  */
 
-require_once(dirname(__FILE__) . '/../Model.php');
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -36,6 +36,7 @@ require_once(dirname(__FILE__) . '/../Model.php');
  * <li>Title: string</li>
  * <li>QuantityOrdered: int</li>
  * <li>QuantityShipped: int</li>
+ * <li>PointsGranted: MarketplaceWebServiceOrders_Model_PointsGrantedDetail</li>
  * <li>ItemPrice: MarketplaceWebServiceOrders_Model_Money</li>
  * <li>ShippingPrice: MarketplaceWebServiceOrders_Model_Money</li>
  * <li>GiftWrapPrice: MarketplaceWebServiceOrders_Model_Money</li>
@@ -55,6 +56,7 @@ require_once(dirname(__FILE__) . '/../Model.php');
  * <li>ConditionSubtypeId: string</li>
  * <li>ScheduledDeliveryStartDate: string</li>
  * <li>ScheduledDeliveryEndDate: string</li>
+ * <li>PriceDesignation: string</li>
  *
  * </ul>
  */
@@ -70,6 +72,7 @@ require_once(dirname(__FILE__) . '/../Model.php');
     'Title' => array('FieldValue' => null, 'FieldType' => 'string'),
     'QuantityOrdered' => array('FieldValue' => null, 'FieldType' => 'int'),
     'QuantityShipped' => array('FieldValue' => null, 'FieldType' => 'int'),
+    'PointsGranted' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_PointsGrantedDetail'),
     'ItemPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_Money'),
     'ShippingPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_Money'),
     'GiftWrapPrice' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_Money'),
@@ -89,6 +92,7 @@ require_once(dirname(__FILE__) . '/../Model.php');
     'ConditionSubtypeId' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ScheduledDeliveryStartDate' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ScheduledDeliveryEndDate' => array('FieldValue' => null, 'FieldType' => 'string'),
+    'PriceDesignation' => array('FieldValue' => null, 'FieldType' => 'string'),
     );
     parent::__construct($data);
     }
@@ -366,6 +370,52 @@ require_once(dirname(__FILE__) . '/../Model.php');
     public function withQuantityShipped($value)
     {
         $this->setQuantityShipped($value);
+        return $this;
+    }
+
+    /**
+     * Get the value of the PointsGranted property.
+     *
+     * @return PointsGrantedDetail PointsGranted.
+     */
+    public function getPointsGranted()
+    {
+        return $this->_fields['PointsGranted']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the PointsGranted property.
+     *
+     * @param MarketplaceWebServiceOrders_Model_PointsGrantedDetail pointsGranted
+     * @return this instance
+     */
+    public function setPointsGranted($value)
+    {
+        $this->_fields['PointsGranted']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if PointsGranted is set.
+     *
+     * @return true if PointsGranted is set.
+     */
+    public function isSetPointsGranted()
+    {
+                return !is_null($this->_fields['PointsGranted']['FieldValue']);
+            }
+
+    /**
+     * Set the value of PointsGranted, return this.
+     *
+     * @param pointsGranted
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withPointsGranted($value)
+    {
+        $this->setPointsGranted($value);
         return $this;
     }
 
@@ -1258,6 +1308,52 @@ require_once(dirname(__FILE__) . '/../Model.php');
     public function withScheduledDeliveryEndDate($value)
     {
         $this->setScheduledDeliveryEndDate($value);
+        return $this;
+    }
+
+    /**
+     * Get the value of the PriceDesignation property.
+     *
+     * @return String PriceDesignation.
+     */
+    public function getPriceDesignation()
+    {
+        return $this->_fields['PriceDesignation']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the PriceDesignation property.
+     *
+     * @param string priceDesignation
+     * @return this instance
+     */
+    public function setPriceDesignation($value)
+    {
+        $this->_fields['PriceDesignation']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if PriceDesignation is set.
+     *
+     * @return true if PriceDesignation is set.
+     */
+    public function isSetPriceDesignation()
+    {
+                return !is_null($this->_fields['PriceDesignation']['FieldValue']);
+            }
+
+    /**
+     * Set the value of PriceDesignation, return this.
+     *
+     * @param priceDesignation
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withPriceDesignation($value)
+    {
+        $this->setPriceDesignation($value);
         return $this;
     }
 

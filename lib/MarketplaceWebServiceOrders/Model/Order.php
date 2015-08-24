@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2014 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2015 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,15 +13,15 @@
  * @category Amazon
  * @package  Marketplace Web Service Orders
  * @version  2013-09-01
- * Library Version: 2014-10-20
- * Generated: Fri Oct 17 15:31:59 GMT 2014
+ * Library Version: 2015-06-18
+ * Generated: Thu Jun 18 19:28:12 GMT 2015
  */
 
 /**
  *  @see MarketplaceWebServiceOrders_Model
  */
 
-require_once(dirname(__FILE__) . '/../Model.php');
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -57,6 +57,10 @@ require_once(dirname(__FILE__) . '/../Model.php');
  * <li>LatestShipDate: string</li>
  * <li>EarliestDeliveryDate: string</li>
  * <li>LatestDeliveryDate: string</li>
+ * <li>IsBusinessOrder: bool</li>
+ * <li>PurchaseOrderNumber: string</li>
+ * <li>IsPrime: bool</li>
+ * <li>IsPremiumOrder: bool</li>
  *
  * </ul>
  */
@@ -93,6 +97,10 @@ require_once(dirname(__FILE__) . '/../Model.php');
     'LatestShipDate' => array('FieldValue' => null, 'FieldType' => 'string'),
     'EarliestDeliveryDate' => array('FieldValue' => null, 'FieldType' => 'string'),
     'LatestDeliveryDate' => array('FieldValue' => null, 'FieldType' => 'string'),
+    'IsBusinessOrder' => array('FieldValue' => null, 'FieldType' => 'bool'),
+    'PurchaseOrderNumber' => array('FieldValue' => null, 'FieldType' => 'string'),
+    'IsPrime' => array('FieldValue' => null, 'FieldType' => 'bool'),
+    'IsPremiumOrder' => array('FieldValue' => null, 'FieldType' => 'bool'),
     );
     parent::__construct($data);
     }
@@ -1364,6 +1372,220 @@ require_once(dirname(__FILE__) . '/../Model.php');
     public function withLatestDeliveryDate($value)
     {
         $this->setLatestDeliveryDate($value);
+        return $this;
+    }
+
+    /**
+     * Check the value of IsBusinessOrder.
+     *
+     * @return true if IsBusinessOrder is set to true.
+     */
+    public function isIsBusinessOrder()
+    {
+        return !is_null($this->_fields['IsBusinessOrder']['FieldValue']) && $this->_fields['IsBusinessOrder']['FieldValue'];
+    }
+
+    /**
+     * Get the value of the IsBusinessOrder property.
+     *
+     * @return Boolean IsBusinessOrder.
+     */
+    public function getIsBusinessOrder()
+    {
+        return $this->_fields['IsBusinessOrder']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the IsBusinessOrder property.
+     *
+     * @param bool isBusinessOrder
+     * @return this instance
+     */
+    public function setIsBusinessOrder($value)
+    {
+        $this->_fields['IsBusinessOrder']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if IsBusinessOrder is set.
+     *
+     * @return true if IsBusinessOrder is set.
+     */
+    public function isSetIsBusinessOrder()
+    {
+                return !is_null($this->_fields['IsBusinessOrder']['FieldValue']);
+            }
+
+    /**
+     * Set the value of IsBusinessOrder, return this.
+     *
+     * @param isBusinessOrder
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withIsBusinessOrder($value)
+    {
+        $this->setIsBusinessOrder($value);
+        return $this;
+    }
+
+    /**
+     * Get the value of the PurchaseOrderNumber property.
+     *
+     * @return String PurchaseOrderNumber.
+     */
+    public function getPurchaseOrderNumber()
+    {
+        return $this->_fields['PurchaseOrderNumber']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the PurchaseOrderNumber property.
+     *
+     * @param string purchaseOrderNumber
+     * @return this instance
+     */
+    public function setPurchaseOrderNumber($value)
+    {
+        $this->_fields['PurchaseOrderNumber']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if PurchaseOrderNumber is set.
+     *
+     * @return true if PurchaseOrderNumber is set.
+     */
+    public function isSetPurchaseOrderNumber()
+    {
+                return !is_null($this->_fields['PurchaseOrderNumber']['FieldValue']);
+            }
+
+    /**
+     * Set the value of PurchaseOrderNumber, return this.
+     *
+     * @param purchaseOrderNumber
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withPurchaseOrderNumber($value)
+    {
+        $this->setPurchaseOrderNumber($value);
+        return $this;
+    }
+
+    /**
+     * Check the value of IsPrime.
+     *
+     * @return true if IsPrime is set to true.
+     */
+    public function isIsPrime()
+    {
+        return !is_null($this->_fields['IsPrime']['FieldValue']) && $this->_fields['IsPrime']['FieldValue'];
+    }
+
+    /**
+     * Get the value of the IsPrime property.
+     *
+     * @return Boolean IsPrime.
+     */
+    public function getIsPrime()
+    {
+        return $this->_fields['IsPrime']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the IsPrime property.
+     *
+     * @param bool isPrime
+     * @return this instance
+     */
+    public function setIsPrime($value)
+    {
+        $this->_fields['IsPrime']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if IsPrime is set.
+     *
+     * @return true if IsPrime is set.
+     */
+    public function isSetIsPrime()
+    {
+                return !is_null($this->_fields['IsPrime']['FieldValue']);
+            }
+
+    /**
+     * Set the value of IsPrime, return this.
+     *
+     * @param isPrime
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withIsPrime($value)
+    {
+        $this->setIsPrime($value);
+        return $this;
+    }
+
+    /**
+     * Check the value of IsPremiumOrder.
+     *
+     * @return true if IsPremiumOrder is set to true.
+     */
+    public function isIsPremiumOrder()
+    {
+        return !is_null($this->_fields['IsPremiumOrder']['FieldValue']) && $this->_fields['IsPremiumOrder']['FieldValue'];
+    }
+
+    /**
+     * Get the value of the IsPremiumOrder property.
+     *
+     * @return Boolean IsPremiumOrder.
+     */
+    public function getIsPremiumOrder()
+    {
+        return $this->_fields['IsPremiumOrder']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the IsPremiumOrder property.
+     *
+     * @param bool isPremiumOrder
+     * @return this instance
+     */
+    public function setIsPremiumOrder($value)
+    {
+        $this->_fields['IsPremiumOrder']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if IsPremiumOrder is set.
+     *
+     * @return true if IsPremiumOrder is set.
+     */
+    public function isSetIsPremiumOrder()
+    {
+                return !is_null($this->_fields['IsPremiumOrder']['FieldValue']);
+            }
+
+    /**
+     * Set the value of IsPremiumOrder, return this.
+     *
+     * @param isPremiumOrder
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withIsPremiumOrder($value)
+    {
+        $this->setIsPremiumOrder($value);
         return $this;
     }
 

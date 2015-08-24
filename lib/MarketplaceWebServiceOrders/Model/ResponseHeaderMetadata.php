@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2014 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2015 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,8 +13,8 @@
  * @category Amazon
  * @package  Marketplace Web Service Orders
  * @version  2013-09-01
- * Library Version: 2014-10-20
- * Generated: Fri Oct 17 15:31:59 GMT 2014
+ * Library Version: 2015-06-18
+ * Generated: Thu Jun 18 19:28:12 GMT 2015
  */
 
 class MarketplaceWebServiceOrders_Model_ResponseHeaderMetadata {
