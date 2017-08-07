@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2015 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2017 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,8 +13,8 @@
  * @category Amazon
  * @package  Marketplace Web Service Orders
  * @version  2013-09-01
- * Library Version: 2015-06-18
- * Generated: Thu Jun 18 19:28:12 GMT 2015
+ * Library Version: 2017-02-22
+ * Generated: Thu Mar 02 12:41:08 UTC 2017
  */
 
 /**
@@ -57,6 +57,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
  * <li>ScheduledDeliveryStartDate: string</li>
  * <li>ScheduledDeliveryEndDate: string</li>
  * <li>PriceDesignation: string</li>
+ * <li>BuyerCustomizedInfo: MarketplaceWebServiceOrders_Model_BuyerCustomizedInfoDetail</li>
  *
  * </ul>
  */
@@ -93,6 +94,7 @@ require_once (dirname(__FILE__) . '/../Model.php');
     'ScheduledDeliveryStartDate' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ScheduledDeliveryEndDate' => array('FieldValue' => null, 'FieldType' => 'string'),
     'PriceDesignation' => array('FieldValue' => null, 'FieldType' => 'string'),
+    'BuyerCustomizedInfo' => array('FieldValue' => null, 'FieldType' => 'MarketplaceWebServiceOrders_Model_BuyerCustomizedInfoDetail'),
     );
     parent::__construct($data);
     }
@@ -1354,6 +1356,52 @@ require_once (dirname(__FILE__) . '/../Model.php');
     public function withPriceDesignation($value)
     {
         $this->setPriceDesignation($value);
+        return $this;
+    }
+
+    /**
+     * Get the value of the BuyerCustomizedInfo property.
+     *
+     * @return BuyerCustomizedInfoDetail BuyerCustomizedInfo.
+     */
+    public function getBuyerCustomizedInfo()
+    {
+        return $this->_fields['BuyerCustomizedInfo']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the BuyerCustomizedInfo property.
+     *
+     * @param MarketplaceWebServiceOrders_Model_BuyerCustomizedInfoDetail buyerCustomizedInfo
+     * @return this instance
+     */
+    public function setBuyerCustomizedInfo($value)
+    {
+        $this->_fields['BuyerCustomizedInfo']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if BuyerCustomizedInfo is set.
+     *
+     * @return true if BuyerCustomizedInfo is set.
+     */
+    public function isSetBuyerCustomizedInfo()
+    {
+                return !is_null($this->_fields['BuyerCustomizedInfo']['FieldValue']);
+            }
+
+    /**
+     * Set the value of BuyerCustomizedInfo, return this.
+     *
+     * @param buyerCustomizedInfo
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withBuyerCustomizedInfo($value)
+    {
+        $this->setBuyerCustomizedInfo($value);
         return $this;
     }
 
