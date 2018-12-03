@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2014 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2018 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,15 +13,15 @@
  * @category Amazon
  * @package  FBA Inbound Service MWS
  * @version  2010-10-01
- * Library Version: 2014-09-30
- * Generated: Fri Nov 21 18:21:09 GMT 2014
+ * Library Version: 2016-10-05
+ * Generated: Thu Nov 08 11:45:48 PST 2018
  */
 
 /**
  *  @see FBAInboundServiceMWS_Model
  */
 
-require_once(dirname(__FILE__) . '/../Model.php');
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**

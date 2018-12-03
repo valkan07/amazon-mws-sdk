@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2014 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2018 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,15 +13,15 @@
  * @category Amazon
  * @package  FBA Inbound Service MWS
  * @version  2010-10-01
- * Library Version: 2014-09-30
- * Generated: Fri Nov 21 18:21:09 GMT 2014
+ * Library Version: 2016-10-05
+ * Generated: Thu Nov 08 11:45:48 PST 2018
  */
 
 /**
  *  @see FBAInboundServiceMWS_Model
  */
 
-require_once(dirname(__FILE__) . '/../Model.php');
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -36,6 +36,7 @@ require_once(dirname(__FILE__) . '/../Model.php');
  * <li>ShipFromAddress: FBAInboundServiceMWS_Model_Address</li>
  * <li>LabelPrepPreference: string</li>
  * <li>ShipToCountryCode: string</li>
+ * <li>ShipToCountrySubdivisionCode: string</li>
  * <li>InboundShipmentPlanRequestItems: FBAInboundServiceMWS_Model_InboundShipmentPlanRequestItemList</li>
  *
  * </ul>
@@ -52,6 +53,7 @@ require_once(dirname(__FILE__) . '/../Model.php');
     'ShipFromAddress' => array('FieldValue' => null, 'FieldType' => 'FBAInboundServiceMWS_Model_Address'),
     'LabelPrepPreference' => array('FieldValue' => null, 'FieldType' => 'string'),
     'ShipToCountryCode' => array('FieldValue' => null, 'FieldType' => 'string'),
+    'ShipToCountrySubdivisionCode' => array('FieldValue' => null, 'FieldType' => 'string'),
     'InboundShipmentPlanRequestItems' => array('FieldValue' => null, 'FieldType' => 'FBAInboundServiceMWS_Model_InboundShipmentPlanRequestItemList'),
     );
     parent::__construct($data);
@@ -330,6 +332,52 @@ require_once(dirname(__FILE__) . '/../Model.php');
     public function withShipToCountryCode($value)
     {
         $this->setShipToCountryCode($value);
+        return $this;
+    }
+
+    /**
+     * Get the value of the ShipToCountrySubdivisionCode property.
+     *
+     * @return String ShipToCountrySubdivisionCode.
+     */
+    public function getShipToCountrySubdivisionCode()
+    {
+        return $this->_fields['ShipToCountrySubdivisionCode']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the ShipToCountrySubdivisionCode property.
+     *
+     * @param string shipToCountrySubdivisionCode
+     * @return this instance
+     */
+    public function setShipToCountrySubdivisionCode($value)
+    {
+        $this->_fields['ShipToCountrySubdivisionCode']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if ShipToCountrySubdivisionCode is set.
+     *
+     * @return true if ShipToCountrySubdivisionCode is set.
+     */
+    public function isSetShipToCountrySubdivisionCode()
+    {
+                return !is_null($this->_fields['ShipToCountrySubdivisionCode']['FieldValue']);
+            }
+
+    /**
+     * Set the value of ShipToCountrySubdivisionCode, return this.
+     *
+     * @param shipToCountrySubdivisionCode
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withShipToCountrySubdivisionCode($value)
+    {
+        $this->setShipToCountrySubdivisionCode($value);
         return $this;
     }
 

@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2014 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2018 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,15 +13,15 @@
  * @category Amazon
  * @package  FBA Inbound Service MWS
  * @version  2010-10-01
- * Library Version: 2014-09-30
- * Generated: Fri Nov 21 18:21:09 GMT 2014
+ * Library Version: 2016-10-05
+ * Generated: Thu Nov 08 11:45:48 PST 2018
  */
 
 /**
  *  @see FBAInboundServiceMWS_Model
  */
 
-require_once(dirname(__FILE__) . '/../Model.php');
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -35,6 +35,7 @@ require_once(dirname(__FILE__) . '/../Model.php');
  * <li>BarcodeInstruction: string</li>
  * <li>PrepGuidance: string</li>
  * <li>PrepInstructionList: FBAInboundServiceMWS_Model_PrepInstructionList</li>
+ * <li>AmazonPrepFeesDetailsList: FBAInboundServiceMWS_Model_AmazonPrepFeesDetailsList</li>
  *
  * </ul>
  */
@@ -49,6 +50,7 @@ require_once(dirname(__FILE__) . '/../Model.php');
     'BarcodeInstruction' => array('FieldValue' => null, 'FieldType' => 'string'),
     'PrepGuidance' => array('FieldValue' => null, 'FieldType' => 'string'),
     'PrepInstructionList' => array('FieldValue' => null, 'FieldType' => 'FBAInboundServiceMWS_Model_PrepInstructionList'),
+    'AmazonPrepFeesDetailsList' => array('FieldValue' => null, 'FieldType' => 'FBAInboundServiceMWS_Model_AmazonPrepFeesDetailsList'),
     );
     parent::__construct($data);
     }
@@ -280,6 +282,52 @@ require_once(dirname(__FILE__) . '/../Model.php');
     public function withPrepInstructionList($value)
     {
         $this->setPrepInstructionList($value);
+        return $this;
+    }
+
+    /**
+     * Get the value of the AmazonPrepFeesDetailsList property.
+     *
+     * @return AmazonPrepFeesDetailsList AmazonPrepFeesDetailsList.
+     */
+    public function getAmazonPrepFeesDetailsList()
+    {
+        return $this->_fields['AmazonPrepFeesDetailsList']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the AmazonPrepFeesDetailsList property.
+     *
+     * @param FBAInboundServiceMWS_Model_AmazonPrepFeesDetailsList amazonPrepFeesDetailsList
+     * @return this instance
+     */
+    public function setAmazonPrepFeesDetailsList($value)
+    {
+        $this->_fields['AmazonPrepFeesDetailsList']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if AmazonPrepFeesDetailsList is set.
+     *
+     * @return true if AmazonPrepFeesDetailsList is set.
+     */
+    public function isSetAmazonPrepFeesDetailsList()
+    {
+                return !is_null($this->_fields['AmazonPrepFeesDetailsList']['FieldValue']);
+            }
+
+    /**
+     * Set the value of AmazonPrepFeesDetailsList, return this.
+     *
+     * @param amazonPrepFeesDetailsList
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withAmazonPrepFeesDetailsList($value)
+    {
+        $this->setAmazonPrepFeesDetailsList($value);
         return $this;
     }
 

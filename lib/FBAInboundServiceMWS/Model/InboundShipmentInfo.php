@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2014 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2018 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,15 +13,15 @@
  * @category Amazon
  * @package  FBA Inbound Service MWS
  * @version  2010-10-01
- * Library Version: 2014-09-30
- * Generated: Fri Nov 21 18:21:09 GMT 2014
+ * Library Version: 2016-10-05
+ * Generated: Thu Nov 08 11:45:48 PST 2018
  */
 
 /**
  *  @see FBAInboundServiceMWS_Model
  */
 
-require_once(dirname(__FILE__) . '/../Model.php');
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -37,6 +37,9 @@ require_once(dirname(__FILE__) . '/../Model.php');
  * <li>ShipmentStatus: string</li>
  * <li>LabelPrepType: string</li>
  * <li>AreCasesRequired: bool</li>
+ * <li>ConfirmedNeedByDate: string</li>
+ * <li>BoxContentsSource: string</li>
+ * <li>EstimatedBoxContentsFee: FBAInboundServiceMWS_Model_BoxContentsFeeDetails</li>
  *
  * </ul>
  */
@@ -53,6 +56,9 @@ require_once(dirname(__FILE__) . '/../Model.php');
     'ShipmentStatus' => array('FieldValue' => null, 'FieldType' => 'string'),
     'LabelPrepType' => array('FieldValue' => null, 'FieldType' => 'string'),
     'AreCasesRequired' => array('FieldValue' => null, 'FieldType' => 'bool'),
+    'ConfirmedNeedByDate' => array('FieldValue' => null, 'FieldType' => 'string'),
+    'BoxContentsSource' => array('FieldValue' => null, 'FieldType' => 'string'),
+    'EstimatedBoxContentsFee' => array('FieldValue' => null, 'FieldType' => 'FBAInboundServiceMWS_Model_BoxContentsFeeDetails'),
     );
     parent::__construct($data);
     }
@@ -386,6 +392,144 @@ require_once(dirname(__FILE__) . '/../Model.php');
     public function withAreCasesRequired($value)
     {
         $this->setAreCasesRequired($value);
+        return $this;
+    }
+
+    /**
+     * Get the value of the ConfirmedNeedByDate property.
+     *
+     * @return String ConfirmedNeedByDate.
+     */
+    public function getConfirmedNeedByDate()
+    {
+        return $this->_fields['ConfirmedNeedByDate']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the ConfirmedNeedByDate property.
+     *
+     * @param string confirmedNeedByDate
+     * @return this instance
+     */
+    public function setConfirmedNeedByDate($value)
+    {
+        $this->_fields['ConfirmedNeedByDate']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if ConfirmedNeedByDate is set.
+     *
+     * @return true if ConfirmedNeedByDate is set.
+     */
+    public function isSetConfirmedNeedByDate()
+    {
+                return !is_null($this->_fields['ConfirmedNeedByDate']['FieldValue']);
+            }
+
+    /**
+     * Set the value of ConfirmedNeedByDate, return this.
+     *
+     * @param confirmedNeedByDate
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withConfirmedNeedByDate($value)
+    {
+        $this->setConfirmedNeedByDate($value);
+        return $this;
+    }
+
+    /**
+     * Get the value of the BoxContentsSource property.
+     *
+     * @return String BoxContentsSource.
+     */
+    public function getBoxContentsSource()
+    {
+        return $this->_fields['BoxContentsSource']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the BoxContentsSource property.
+     *
+     * @param string boxContentsSource
+     * @return this instance
+     */
+    public function setBoxContentsSource($value)
+    {
+        $this->_fields['BoxContentsSource']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if BoxContentsSource is set.
+     *
+     * @return true if BoxContentsSource is set.
+     */
+    public function isSetBoxContentsSource()
+    {
+                return !is_null($this->_fields['BoxContentsSource']['FieldValue']);
+            }
+
+    /**
+     * Set the value of BoxContentsSource, return this.
+     *
+     * @param boxContentsSource
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withBoxContentsSource($value)
+    {
+        $this->setBoxContentsSource($value);
+        return $this;
+    }
+
+    /**
+     * Get the value of the EstimatedBoxContentsFee property.
+     *
+     * @return BoxContentsFeeDetails EstimatedBoxContentsFee.
+     */
+    public function getEstimatedBoxContentsFee()
+    {
+        return $this->_fields['EstimatedBoxContentsFee']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the EstimatedBoxContentsFee property.
+     *
+     * @param FBAInboundServiceMWS_Model_BoxContentsFeeDetails estimatedBoxContentsFee
+     * @return this instance
+     */
+    public function setEstimatedBoxContentsFee($value)
+    {
+        $this->_fields['EstimatedBoxContentsFee']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if EstimatedBoxContentsFee is set.
+     *
+     * @return true if EstimatedBoxContentsFee is set.
+     */
+    public function isSetEstimatedBoxContentsFee()
+    {
+                return !is_null($this->_fields['EstimatedBoxContentsFee']['FieldValue']);
+            }
+
+    /**
+     * Set the value of EstimatedBoxContentsFee, return this.
+     *
+     * @param estimatedBoxContentsFee
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withEstimatedBoxContentsFee($value)
+    {
+        $this->setEstimatedBoxContentsFee($value);
         return $this;
     }
 

@@ -10,6 +10,15 @@
                 <PrepInstructionList>
                     <PrepInstruction>String</PrepInstruction>
                 </PrepInstructionList>
+                <AmazonPrepFeesDetailsList>
+                    <AmazonPrepFeesDetails>
+                        <PrepInstruction>String</PrepInstruction>
+                        <FeePerUnit>
+                        <CurrencyCode>String</CurrencyCode>
+                        <Value>100</Value>
+                        </FeePerUnit>
+                    </AmazonPrepFeesDetails>
+                </AmazonPrepFeesDetailsList>
             </SKUPrepInstructions>
         </SKUPrepInstructionsList>
         <InvalidSKUList>

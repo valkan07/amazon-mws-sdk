@@ -9,6 +9,13 @@
                 <QuantityShipped>1</QuantityShipped>
                 <QuantityReceived>1</QuantityReceived>
                 <QuantityInCase>1</QuantityInCase>
+                <ReleaseDate>String</ReleaseDate>
+                <PrepDetailsList>
+                    <PrepDetails>
+                        <PrepInstruction>String</PrepInstruction>
+                        <PrepOwner>String</PrepOwner>
+                    </PrepDetails>
+                </PrepDetailsList>
             </member>
         </ItemData>
         <NextToken>String</NextToken>

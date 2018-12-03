@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2014 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2018 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,14 +13,14 @@
  * @category Amazon
  * @package  FBA Inbound Service MWS
  * @version  2010-10-01
- * Library Version: 2014-09-30
- * Generated: Fri Nov 21 18:21:09 GMT 2014
+ * Library Version: 2016-10-05
+ * Generated: Thu Nov 08 11:45:48 PST 2018
  */
 
 /**
  *  @see FBAInboundServiceMWS_Interface
  */
-require_once(dirname(__FILE__) . '/Interface.php');
+require_once (dirname(__FILE__) . '/Interface.php');
 
 /**
  * FBAInboundServiceMWS_Client is an implementation of FBAInboundServiceMWS
@@ -30,7 +30,7 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
 {
 
     const SERVICE_VERSION = '2010-10-01';
-    const MWS_CLIENT_VERSION = '2014-09-30';
+    const MWS_CLIENT_VERSION = '2016-10-05';
 
     /** @var string */
     private  $_awsAccessKeyId = null;
@@ -45,9 +45,72 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
                                'SignatureMethod' => 'HmacSHA256',
                                'ProxyHost' => null,
                                'ProxyPort' => -1,
+                               'ProxyUsername' => null,
+                               'ProxyPassword' => null,
                                'MaxErrorRetry' => 3,
                                'Headers' => array()
                                );
+
+
+    /**
+     * Confirm Preorder
+     * Given a shipment id. and date as input, this API confirms a shipment as a
+     * pre-order.
+     * This date must be the same as the NeedByDate (NBD) that is returned in the
+     * GetPreorderInfo API. Any other date will result in an appropriate error code.
+     * All items in the shipment with a release date on or after the
+     * ConfirmedFulfillableDate ( also returned by the GetPreorderInfo  API) would
+     * be pre-orderable on the website and would be fulfilled without promise breaks,
+     * if the NBD is met.
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_ConfirmPreorder request or FBAInboundServiceMWS_Model_ConfirmPreorder object itself
+     * @see FBAInboundServiceMWS_Model_ConfirmPreorderRequest
+     * @return FBAInboundServiceMWS_Model_ConfirmPreorderResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function confirmPreorder($request)
+    {
+        if (!($request instanceof FBAInboundServiceMWS_Model_ConfirmPreorderRequest)) {
+            require_once (dirname(__FILE__) . '/Model/ConfirmPreorderRequest.php');
+            $request = new FBAInboundServiceMWS_Model_ConfirmPreorderRequest($request);
+        }
+        $parameters = $request->toQueryParameterArray();
+        $parameters['Action'] = 'ConfirmPreorder';
+        $httpResponse = $this->_invoke($parameters);
+
+        require_once (dirname(__FILE__) . '/Model/ConfirmPreorderResponse.php');
+        $response = FBAInboundServiceMWS_Model_ConfirmPreorderResponse::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+        return $response;
+    }
+
+
+    /**
+     * Convert ConfirmPreorderRequest to name value pairs
+     */
+    private function _convertConfirmPreorder($request) {
+
+        $parameters = array();
+        $parameters['Action'] = 'ConfirmPreorder';
+        if ($request->isSetSellerId()) {
+            $parameters['SellerId'] =  $request->getSellerId();
+        }
+        if ($request->isSetMWSAuthToken()) {
+            $parameters['MWSAuthToken'] =  $request->getMWSAuthToken();
+        }
+        if ($request->isSetMarketplace()) {
+            $parameters['Marketplace'] =  $request->getMarketplace();
+        }
+        if ($request->isSetShipmentId()) {
+            $parameters['ShipmentId'] =  $request->getShipmentId();
+        }
+        if ($request->isSetNeedByDate()) {
+            $parameters['NeedByDate'] =  $request->getNeedByDate();
+        }
+
+        return $parameters;
+    }
 
 
     /**
@@ -65,14 +128,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function confirmTransportRequest($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_ConfirmTransportInputRequest)) {
-            require_once(dirname(__FILE__) . '/Model/ConfirmTransportInputRequest.php');
+            require_once (dirname(__FILE__) . '/Model/ConfirmTransportInputRequest.php');
             $request = new FBAInboundServiceMWS_Model_ConfirmTransportInputRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'ConfirmTransportRequest';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/ConfirmTransportRequestResponse.php');
+        require_once (dirname(__FILE__) . '/Model/ConfirmTransportRequestResponse.php');
         $response = FBAInboundServiceMWS_Model_ConfirmTransportRequestResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -117,14 +180,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function createInboundShipment($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_CreateInboundShipmentRequest)) {
-            require_once(dirname(__FILE__) . '/Model/CreateInboundShipmentRequest.php');
+            require_once (dirname(__FILE__) . '/Model/CreateInboundShipmentRequest.php');
             $request = new FBAInboundServiceMWS_Model_CreateInboundShipmentRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'CreateInboundShipment';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/CreateInboundShipmentResponse.php');
+        require_once (dirname(__FILE__) . '/Model/CreateInboundShipmentResponse.php');
         $response = FBAInboundServiceMWS_Model_CreateInboundShipmentResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -184,14 +247,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function createInboundShipmentPlan($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_CreateInboundShipmentPlanRequest)) {
-            require_once(dirname(__FILE__) . '/Model/CreateInboundShipmentPlanRequest.php');
+            require_once (dirname(__FILE__) . '/Model/CreateInboundShipmentPlanRequest.php');
             $request = new FBAInboundServiceMWS_Model_CreateInboundShipmentPlanRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'CreateInboundShipmentPlan';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/CreateInboundShipmentPlanResponse.php');
+        require_once (dirname(__FILE__) . '/Model/CreateInboundShipmentPlanResponse.php');
         $response = FBAInboundServiceMWS_Model_CreateInboundShipmentPlanResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -226,6 +289,9 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
         if ($request->isSetShipToCountryCode()) {
             $parameters['ShipToCountryCode'] =  $request->getShipToCountryCode();
         }
+        if ($request->isSetShipToCountrySubdivisionCode()) {
+            $parameters['ShipToCountrySubdivisionCode'] =  $request->getShipToCountrySubdivisionCode();
+        }
         if ($request->isSetInboundShipmentPlanRequestItems()) {
             $InboundShipmentPlanRequestItemsCreateInboundShipmentPlanRequest = $request->getInboundShipmentPlanRequestItems();
             foreach  ($InboundShipmentPlanRequestItemsCreateInboundShipmentPlanRequest->getmember() as $memberInboundShipmentPlanRequestItemsIndex => $memberInboundShipmentPlanRequestItems) {
@@ -252,14 +318,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function estimateTransportRequest($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_EstimateTransportInputRequest)) {
-            require_once(dirname(__FILE__) . '/Model/EstimateTransportInputRequest.php');
+            require_once (dirname(__FILE__) . '/Model/EstimateTransportInputRequest.php');
             $request = new FBAInboundServiceMWS_Model_EstimateTransportInputRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'EstimateTransportRequest';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/EstimateTransportRequestResponse.php');
+        require_once (dirname(__FILE__) . '/Model/EstimateTransportRequestResponse.php');
         $response = FBAInboundServiceMWS_Model_EstimateTransportRequestResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -302,14 +368,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function getBillOfLading($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_GetBillOfLadingRequest)) {
-            require_once(dirname(__FILE__) . '/Model/GetBillOfLadingRequest.php');
+            require_once (dirname(__FILE__) . '/Model/GetBillOfLadingRequest.php');
             $request = new FBAInboundServiceMWS_Model_GetBillOfLadingRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetBillOfLading';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/GetBillOfLadingResponse.php');
+        require_once (dirname(__FILE__) . '/Model/GetBillOfLadingResponse.php');
         $response = FBAInboundServiceMWS_Model_GetBillOfLadingResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -338,6 +404,116 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
 
 
     /**
+     * Get Inbound Guidance For ASIN
+     * Given a list of ASINs and shipToCountryCode, this API returns Inbound
+     *      guidance to ASINs in request with optional reason code if applicable.
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetInboundGuidanceForASIN request or FBAInboundServiceMWS_Model_GetInboundGuidanceForASIN object itself
+     * @see FBAInboundServiceMWS_Model_GetInboundGuidanceForASINRequest
+     * @return FBAInboundServiceMWS_Model_GetInboundGuidanceForASINResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function getInboundGuidanceForASIN($request)
+    {
+        if (!($request instanceof FBAInboundServiceMWS_Model_GetInboundGuidanceForASINRequest)) {
+            require_once (dirname(__FILE__) . '/Model/GetInboundGuidanceForASINRequest.php');
+            $request = new FBAInboundServiceMWS_Model_GetInboundGuidanceForASINRequest($request);
+        }
+        $parameters = $request->toQueryParameterArray();
+        $parameters['Action'] = 'GetInboundGuidanceForASIN';
+        $httpResponse = $this->_invoke($parameters);
+
+        require_once (dirname(__FILE__) . '/Model/GetInboundGuidanceForASINResponse.php');
+        $response = FBAInboundServiceMWS_Model_GetInboundGuidanceForASINResponse::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+        return $response;
+    }
+
+
+    /**
+     * Convert GetInboundGuidanceForASINRequest to name value pairs
+     */
+    private function _convertGetInboundGuidanceForASIN($request) {
+
+        $parameters = array();
+        $parameters['Action'] = 'GetInboundGuidanceForASIN';
+        if ($request->isSetSellerId()) {
+            $parameters['SellerId'] =  $request->getSellerId();
+        }
+        if ($request->isSetMWSAuthToken()) {
+            $parameters['MWSAuthToken'] =  $request->getMWSAuthToken();
+        }
+        if ($request->isSetASINList()) {
+            $ASINListGetInboundGuidanceForASINRequest = $request->getASINList();
+            foreach  ($ASINListGetInboundGuidanceForASINRequest->getId() as $IdASINListIndex => $IdASINList) {
+                $parameters['ASINList' . '.' . 'Id' . '.'  . ($IdASINListIndex + 1)] =  $IdASINList;
+            }
+        }
+        if ($request->isSetMarketplaceId()) {
+            $parameters['MarketplaceId'] =  $request->getMarketplaceId();
+        }
+
+        return $parameters;
+    }
+
+
+    /**
+     * Get Inbound Guidance For SKU
+     * Given a list of SKUs and shipToCountryCode, this API returns Inbound
+     *      guidance to SKUs in request with optional reason code if applicable.
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetInboundGuidanceForSKU request or FBAInboundServiceMWS_Model_GetInboundGuidanceForSKU object itself
+     * @see FBAInboundServiceMWS_Model_GetInboundGuidanceForSKURequest
+     * @return FBAInboundServiceMWS_Model_GetInboundGuidanceForSKUResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function getInboundGuidanceForSKU($request)
+    {
+        if (!($request instanceof FBAInboundServiceMWS_Model_GetInboundGuidanceForSKURequest)) {
+            require_once (dirname(__FILE__) . '/Model/GetInboundGuidanceForSKURequest.php');
+            $request = new FBAInboundServiceMWS_Model_GetInboundGuidanceForSKURequest($request);
+        }
+        $parameters = $request->toQueryParameterArray();
+        $parameters['Action'] = 'GetInboundGuidanceForSKU';
+        $httpResponse = $this->_invoke($parameters);
+
+        require_once (dirname(__FILE__) . '/Model/GetInboundGuidanceForSKUResponse.php');
+        $response = FBAInboundServiceMWS_Model_GetInboundGuidanceForSKUResponse::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+        return $response;
+    }
+
+
+    /**
+     * Convert GetInboundGuidanceForSKURequest to name value pairs
+     */
+    private function _convertGetInboundGuidanceForSKU($request) {
+
+        $parameters = array();
+        $parameters['Action'] = 'GetInboundGuidanceForSKU';
+        if ($request->isSetSellerId()) {
+            $parameters['SellerId'] =  $request->getSellerId();
+        }
+        if ($request->isSetMWSAuthToken()) {
+            $parameters['MWSAuthToken'] =  $request->getMWSAuthToken();
+        }
+        if ($request->isSetSellerSKUList()) {
+            $SellerSKUListGetInboundGuidanceForSKURequest = $request->getSellerSKUList();
+            foreach  ($SellerSKUListGetInboundGuidanceForSKURequest->getId() as $IdSellerSKUListIndex => $IdSellerSKUList) {
+                $parameters['SellerSKUList' . '.' . 'Id' . '.'  . ($IdSellerSKUListIndex + 1)] =  $IdSellerSKUList;
+            }
+        }
+        if ($request->isSetMarketplaceId()) {
+            $parameters['MarketplaceId'] =  $request->getMarketplaceId();
+        }
+
+        return $parameters;
+    }
+
+
+    /**
      * Get Package Labels
      * Retrieves the PDF-formatted package label data for the packages of the
      *     shipment. These labels will include relevant data for shipments utilizing 
@@ -352,7 +528,7 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
      *       * US non-partnered UPS: PackageLabel_Letter_6
      *       * US partnered-UPS: PackageLabel_Letter_2
      *       * GB, DE, FR, IT, ES: PackageLabel_A4_4, PackageLabel_Plain_Paper
-     *       * Partnered EU: ? <!-- TODO: define this -->
+     *       * Partnered EU: PackageLabel_A4_2
      *       * JP/CN: PackageLabel_Plain_Paper
      *
      * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPackageLabels request or FBAInboundServiceMWS_Model_GetPackageLabels object itself
@@ -364,14 +540,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function getPackageLabels($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_GetPackageLabelsRequest)) {
-            require_once(dirname(__FILE__) . '/Model/GetPackageLabelsRequest.php');
+            require_once (dirname(__FILE__) . '/Model/GetPackageLabelsRequest.php');
             $request = new FBAInboundServiceMWS_Model_GetPackageLabelsRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetPackageLabels';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/GetPackageLabelsResponse.php');
+        require_once (dirname(__FILE__) . '/Model/GetPackageLabelsResponse.php');
         $response = FBAInboundServiceMWS_Model_GetPackageLabelsResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -406,6 +582,123 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
 
 
     /**
+     * Get Pallet Labels
+     * Retrieves the PDF-formatted pallet label data for the pallets in an LTL shipment. These labels
+     *     include relevant data for shipments being sent to Amazon Fulfillment Centers. The PDF data will be 
+     *     ZIP'd and then it will be encoded as a Base64 string, and MD5 hash is included with the response to 
+     *     validate the label data which will be encoded as Base64. The language of the address and FC prep 
+     *     instructions sections of the labels are determined by the marketplace in which the request is being 
+     *     made and the marketplace of the destination FC, respectively.
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPalletLabels request or FBAInboundServiceMWS_Model_GetPalletLabels object itself
+     * @see FBAInboundServiceMWS_Model_GetPalletLabelsRequest
+     * @return FBAInboundServiceMWS_Model_GetPalletLabelsResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function getPalletLabels($request)
+    {
+        if (!($request instanceof FBAInboundServiceMWS_Model_GetPalletLabelsRequest)) {
+            require_once (dirname(__FILE__) . '/Model/GetPalletLabelsRequest.php');
+            $request = new FBAInboundServiceMWS_Model_GetPalletLabelsRequest($request);
+        }
+        $parameters = $request->toQueryParameterArray();
+        $parameters['Action'] = 'GetPalletLabels';
+        $httpResponse = $this->_invoke($parameters);
+
+        require_once (dirname(__FILE__) . '/Model/GetPalletLabelsResponse.php');
+        $response = FBAInboundServiceMWS_Model_GetPalletLabelsResponse::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+        return $response;
+    }
+
+
+    /**
+     * Convert GetPalletLabelsRequest to name value pairs
+     */
+    private function _convertGetPalletLabels($request) {
+
+        $parameters = array();
+        $parameters['Action'] = 'GetPalletLabels';
+        if ($request->isSetSellerId()) {
+            $parameters['SellerId'] =  $request->getSellerId();
+        }
+        if ($request->isSetMWSAuthToken()) {
+            $parameters['MWSAuthToken'] =  $request->getMWSAuthToken();
+        }
+        if ($request->isSetShipmentId()) {
+            $parameters['ShipmentId'] =  $request->getShipmentId();
+        }
+        if ($request->isSetPageType()) {
+            $parameters['PageType'] =  $request->getPageType();
+        }
+        if ($request->isSetNumberOfPallets()) {
+            $parameters['NumberOfPallets'] =  $request->getNumberOfPallets();
+        }
+
+        return $parameters;
+    }
+
+
+    /**
+     * Get Preorder Info
+     * Given a shipment id. as input, based on the release date of the items in the
+     * shipment, this API returns the suggested need By Date that the shipment items
+     * must reach Amazon FC to successfully fulfill Pre-Orders without any promise
+     * breaks.
+     * This API also returns the confirmed Fullfillable date. All items in the
+     * shipment that have a release date on or after this date would have the
+     * pre-order buy box show up on the detail page if this shipment is marked as a
+     * pre-orderable.
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPreorderInfo request or FBAInboundServiceMWS_Model_GetPreorderInfo object itself
+     * @see FBAInboundServiceMWS_Model_GetPreorderInfoRequest
+     * @return FBAInboundServiceMWS_Model_GetPreorderInfoResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function getPreorderInfo($request)
+    {
+        if (!($request instanceof FBAInboundServiceMWS_Model_GetPreorderInfoRequest)) {
+            require_once (dirname(__FILE__) . '/Model/GetPreorderInfoRequest.php');
+            $request = new FBAInboundServiceMWS_Model_GetPreorderInfoRequest($request);
+        }
+        $parameters = $request->toQueryParameterArray();
+        $parameters['Action'] = 'GetPreorderInfo';
+        $httpResponse = $this->_invoke($parameters);
+
+        require_once (dirname(__FILE__) . '/Model/GetPreorderInfoResponse.php');
+        $response = FBAInboundServiceMWS_Model_GetPreorderInfoResponse::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+        return $response;
+    }
+
+
+    /**
+     * Convert GetPreorderInfoRequest to name value pairs
+     */
+    private function _convertGetPreorderInfo($request) {
+
+        $parameters = array();
+        $parameters['Action'] = 'GetPreorderInfo';
+        if ($request->isSetSellerId()) {
+            $parameters['SellerId'] =  $request->getSellerId();
+        }
+        if ($request->isSetMWSAuthToken()) {
+            $parameters['MWSAuthToken'] =  $request->getMWSAuthToken();
+        }
+        if ($request->isSetMarketplace()) {
+            $parameters['Marketplace'] =  $request->getMarketplace();
+        }
+        if ($request->isSetShipmentId()) {
+            $parameters['ShipmentId'] =  $request->getShipmentId();
+        }
+
+        return $parameters;
+    }
+
+
+    /**
      * Get Prep Instructions For ASIN
      * Returns the required prep that must be performed for a set of items, identified
      * by ASINs, that will be sent to Amazon. It returns guidance for the seller
@@ -422,14 +715,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function getPrepInstructionsForASIN($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_GetPrepInstructionsForASINRequest)) {
-            require_once(dirname(__FILE__) . '/Model/GetPrepInstructionsForASINRequest.php');
+            require_once (dirname(__FILE__) . '/Model/GetPrepInstructionsForASINRequest.php');
             $request = new FBAInboundServiceMWS_Model_GetPrepInstructionsForASINRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetPrepInstructionsForASIN';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/GetPrepInstructionsForASINResponse.php');
+        require_once (dirname(__FILE__) . '/Model/GetPrepInstructionsForASINResponse.php');
         $response = FBAInboundServiceMWS_Model_GetPrepInstructionsForASINResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -480,14 +773,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function getPrepInstructionsForSKU($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_GetPrepInstructionsForSKURequest)) {
-            require_once(dirname(__FILE__) . '/Model/GetPrepInstructionsForSKURequest.php');
+            require_once (dirname(__FILE__) . '/Model/GetPrepInstructionsForSKURequest.php');
             $request = new FBAInboundServiceMWS_Model_GetPrepInstructionsForSKURequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetPrepInstructionsForSKU';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/GetPrepInstructionsForSKUResponse.php');
+        require_once (dirname(__FILE__) . '/Model/GetPrepInstructionsForSKUResponse.php');
         $response = FBAInboundServiceMWS_Model_GetPrepInstructionsForSKUResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -537,14 +830,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function getServiceStatus($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_GetServiceStatusRequest)) {
-            require_once(dirname(__FILE__) . '/Model/GetServiceStatusRequest.php');
+            require_once (dirname(__FILE__) . '/Model/GetServiceStatusRequest.php');
             $request = new FBAInboundServiceMWS_Model_GetServiceStatusRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetServiceStatus';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/GetServiceStatusResponse.php');
+        require_once (dirname(__FILE__) . '/Model/GetServiceStatusResponse.php');
         $response = FBAInboundServiceMWS_Model_GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -587,14 +880,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function getTransportContent($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_GetTransportContentRequest)) {
-            require_once(dirname(__FILE__) . '/Model/GetTransportContentRequest.php');
+            require_once (dirname(__FILE__) . '/Model/GetTransportContentRequest.php');
             $request = new FBAInboundServiceMWS_Model_GetTransportContentRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'GetTransportContent';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/GetTransportContentResponse.php');
+        require_once (dirname(__FILE__) . '/Model/GetTransportContentResponse.php');
         $response = FBAInboundServiceMWS_Model_GetTransportContentResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -616,6 +909,79 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
         }
         if ($request->isSetShipmentId()) {
             $parameters['ShipmentId'] =  $request->getShipmentId();
+        }
+
+        return $parameters;
+    }
+
+
+    /**
+     * Get Unique Package Labels
+     * Retrieves the PDF-formatted package label data for the packages of the
+     *     shipment. These labels will include relevant data for shipments utilizing 
+     *     Amazon-partnered carriers. Each label contains a unique package identifier that represents the mapping between
+     *     physical and virtual packages. This API requires that Carton Information has been provided for all packages in the
+     *     shipment. The PDF data will be ZIP'd and then it will be encoded as a Base64 string, and
+     *     MD5 hash is included with the response to validate the label data which will be encoded as Base64.
+     *     The language of the address and FC prep instructions sections of the labels are
+     *     determined by the marketplace in which the request is being made and the marketplace of
+     *     the destination FC, respectively.
+     *     
+     *     Only select PageTypes are supported in each marketplace. By marketplace, the
+     *     supported types are:
+     *       * US non-partnered UPS: PackageLabel_Letter_6
+     *       * US partnered-UPS: PackageLabel_Letter_2
+     *       * GB, DE, FR, IT, ES: PackageLabel_A4_4, PackageLabel_Plain_Paper
+     *       * Partnered EU: PackageLabel_A4_2
+     *       * JP/CN: PackageLabel_Plain_Paper
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetUniquePackageLabels request or FBAInboundServiceMWS_Model_GetUniquePackageLabels object itself
+     * @see FBAInboundServiceMWS_Model_GetUniquePackageLabelsRequest
+     * @return FBAInboundServiceMWS_Model_GetUniquePackageLabelsResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function getUniquePackageLabels($request)
+    {
+        if (!($request instanceof FBAInboundServiceMWS_Model_GetUniquePackageLabelsRequest)) {
+            require_once (dirname(__FILE__) . '/Model/GetUniquePackageLabelsRequest.php');
+            $request = new FBAInboundServiceMWS_Model_GetUniquePackageLabelsRequest($request);
+        }
+        $parameters = $request->toQueryParameterArray();
+        $parameters['Action'] = 'GetUniquePackageLabels';
+        $httpResponse = $this->_invoke($parameters);
+
+        require_once (dirname(__FILE__) . '/Model/GetUniquePackageLabelsResponse.php');
+        $response = FBAInboundServiceMWS_Model_GetUniquePackageLabelsResponse::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+        return $response;
+    }
+
+
+    /**
+     * Convert GetUniquePackageLabelsRequest to name value pairs
+     */
+    private function _convertGetUniquePackageLabels($request) {
+
+        $parameters = array();
+        $parameters['Action'] = 'GetUniquePackageLabels';
+        if ($request->isSetSellerId()) {
+            $parameters['SellerId'] =  $request->getSellerId();
+        }
+        if ($request->isSetMWSAuthToken()) {
+            $parameters['MWSAuthToken'] =  $request->getMWSAuthToken();
+        }
+        if ($request->isSetShipmentId()) {
+            $parameters['ShipmentId'] =  $request->getShipmentId();
+        }
+        if ($request->isSetPageType()) {
+            $parameters['PageType'] =  $request->getPageType();
+        }
+        if ($request->isSetPackageLabelsToPrint()) {
+            $PackageLabelsToPrintGetUniquePackageLabelsRequest = $request->getPackageLabelsToPrint();
+            foreach  ($PackageLabelsToPrintGetUniquePackageLabelsRequest->getmember() as $memberPackageLabelsToPrintIndex => $memberPackageLabelsToPrint) {
+                $parameters['PackageLabelsToPrint' . '.' . 'member' . '.'  . ($memberPackageLabelsToPrintIndex + 1)] =  $memberPackageLabelsToPrint;
+            }
         }
 
         return $parameters;
@@ -645,14 +1011,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function listInboundShipmentItems($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_ListInboundShipmentItemsRequest)) {
-            require_once(dirname(__FILE__) . '/Model/ListInboundShipmentItemsRequest.php');
+            require_once (dirname(__FILE__) . '/Model/ListInboundShipmentItemsRequest.php');
             $request = new FBAInboundServiceMWS_Model_ListInboundShipmentItemsRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'ListInboundShipmentItems';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/ListInboundShipmentItemsResponse.php');
+        require_once (dirname(__FILE__) . '/Model/ListInboundShipmentItemsResponse.php');
         $response = FBAInboundServiceMWS_Model_ListInboundShipmentItemsResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -705,14 +1071,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function listInboundShipmentItemsByNextToken($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_ListInboundShipmentItemsByNextTokenRequest)) {
-            require_once(dirname(__FILE__) . '/Model/ListInboundShipmentItemsByNextTokenRequest.php');
+            require_once (dirname(__FILE__) . '/Model/ListInboundShipmentItemsByNextTokenRequest.php');
             $request = new FBAInboundServiceMWS_Model_ListInboundShipmentItemsByNextTokenRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'ListInboundShipmentItemsByNextToken';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/ListInboundShipmentItemsByNextTokenResponse.php');
+        require_once (dirname(__FILE__) . '/Model/ListInboundShipmentItemsByNextTokenResponse.php');
         $response = FBAInboundServiceMWS_Model_ListInboundShipmentItemsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -764,14 +1130,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function listInboundShipments($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_ListInboundShipmentsRequest)) {
-            require_once(dirname(__FILE__) . '/Model/ListInboundShipmentsRequest.php');
+            require_once (dirname(__FILE__) . '/Model/ListInboundShipmentsRequest.php');
             $request = new FBAInboundServiceMWS_Model_ListInboundShipmentsRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'ListInboundShipments';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/ListInboundShipmentsResponse.php');
+        require_once (dirname(__FILE__) . '/Model/ListInboundShipmentsResponse.php');
         $response = FBAInboundServiceMWS_Model_ListInboundShipmentsResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -832,14 +1198,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function listInboundShipmentsByNextToken($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_ListInboundShipmentsByNextTokenRequest)) {
-            require_once(dirname(__FILE__) . '/Model/ListInboundShipmentsByNextTokenRequest.php');
+            require_once (dirname(__FILE__) . '/Model/ListInboundShipmentsByNextTokenRequest.php');
             $request = new FBAInboundServiceMWS_Model_ListInboundShipmentsByNextTokenRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'ListInboundShipmentsByNextToken';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/ListInboundShipmentsByNextTokenResponse.php');
+        require_once (dirname(__FILE__) . '/Model/ListInboundShipmentsByNextTokenResponse.php');
         $response = FBAInboundServiceMWS_Model_ListInboundShipmentsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -884,14 +1250,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function putTransportContent($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_PutTransportContentRequest)) {
-            require_once(dirname(__FILE__) . '/Model/PutTransportContentRequest.php');
+            require_once (dirname(__FILE__) . '/Model/PutTransportContentRequest.php');
             $request = new FBAInboundServiceMWS_Model_PutTransportContentRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'PutTransportContent';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/PutTransportContentResponse.php');
+        require_once (dirname(__FILE__) . '/Model/PutTransportContentResponse.php');
         $response = FBAInboundServiceMWS_Model_PutTransportContentResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -955,14 +1321,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function updateInboundShipment($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_UpdateInboundShipmentRequest)) {
-            require_once(dirname(__FILE__) . '/Model/UpdateInboundShipmentRequest.php');
+            require_once (dirname(__FILE__) . '/Model/UpdateInboundShipmentRequest.php');
             $request = new FBAInboundServiceMWS_Model_UpdateInboundShipmentRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'UpdateInboundShipment';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/UpdateInboundShipmentResponse.php');
+        require_once (dirname(__FILE__) . '/Model/UpdateInboundShipmentResponse.php');
         $response = FBAInboundServiceMWS_Model_UpdateInboundShipmentResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -1023,14 +1389,14 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     public function voidTransportRequest($request)
     {
         if (!($request instanceof FBAInboundServiceMWS_Model_VoidTransportInputRequest)) {
-            require_once(dirname(__FILE__) . '/Model/VoidTransportInputRequest.php');
+            require_once (dirname(__FILE__) . '/Model/VoidTransportInputRequest.php');
             $request = new FBAInboundServiceMWS_Model_VoidTransportInputRequest($request);
         }
         $parameters = $request->toQueryParameterArray();
         $parameters['Action'] = 'VoidTransportRequest';
         $httpResponse = $this->_invoke($parameters);
 
-        require_once(dirname(__FILE__) . '/Model/VoidTransportRequestResponse.php');
+        require_once (dirname(__FILE__) . '/Model/VoidTransportRequestResponse.php');
         $response = FBAInboundServiceMWS_Model_VoidTransportRequestResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
         return $response;
@@ -1073,6 +1439,8 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
      * <li>TimesRetryOnError</li>
      * <li>ProxyHost</li>
      * <li>ProxyPort</li>
+     * <li>ProxyUsername<li>
+     * <li>ProxyPassword<li>
      * <li>MaxErrorRetry</li>
      * </ul>
      */
@@ -1217,7 +1585,7 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
     {
         try {
             if (empty($this->_config['ServiceURL'])) {
-                require_once(dirname(__FILE__) . '/Exception.php');
+                require_once (dirname(__FILE__) . '/Exception.php');
                 throw new FBAInboundServiceMWS_Exception(
                     array ('ErrorCode' => 'InvalidServiceURL',
                            'Message' => "Missing serviceUrl configuration value. You may obtain a list of valid MWS URLs by consulting the MWS Developer's Guide, or reviewing the sample code published along side this library."));
@@ -1227,11 +1595,11 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
             for (;;) {
                 $response = $this->_httpPost($parameters);
                 $status = $response['Status'];
-                if ($status === 200) {
+                if ($status == 200) {
                     return array('ResponseBody' => $response['ResponseBody'],
                       'ResponseHeaderMetadata' => $response['ResponseHeaderMetadata']);
                 }
-                if ($status === 500 && $this->_pauseOnRetry(++$retries)) {
+                if ($status == 500 && $this->_pauseOnRetry(++$retries)) {
                     continue;
                 }
                 throw $this->_reportAnyErrors($response['ResponseBody'],
@@ -1240,7 +1608,7 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
         } catch (FBAInboundServiceMWS_Exception $se) {
             throw $se;
         } catch (Exception $t) {
-            require_once(dirname(__FILE__) . '/Exception.php');
+            require_once (dirname(__FILE__) . '/Exception.php');
             throw new FBAInboundServiceMWS_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
         }
     }
@@ -1267,7 +1635,7 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
             $exProps["Message"] = "Internal Error";
         }
 
-        require_once(dirname(__FILE__) . '/Exception.php');
+        require_once (dirname(__FILE__) . '/Exception.php');
         return new FBAInboundServiceMWS_Exception($exProps);
     }
 
@@ -1323,12 +1691,16 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
         {
             curl_setopt($ch, CURLOPT_PROXY, $config['ProxyHost'] . ':' . $config['ProxyPort']);
         }
+        if ($config['ProxyUsername'] != null && $config['ProxyPassword'] != null)
+        {
+            curl_setopt($ch, CURLOPT_PROXYUSERPWD, $config['ProxyUsername'] . ':' . $config['ProxyPassword']);
+        }
 
         $response = "";
         $response = curl_exec($ch);
 
         if($response === false) {
-            require_once(dirname(__FILE__) . '/Exception.php');
+            require_once (dirname(__FILE__) . '/Exception.php');
             $exProps["Message"] = curl_error($ch);
             $exProps["ErrorType"] = "HTTP";
             curl_close($ch);
@@ -1360,7 +1732,7 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
      */
     private function _extractHeadersAndBody($response){
         //First split by 2 'CRLF'
-        $responseComponents = preg_split("/(?:\r?\n){2}/", $response);
+        $responseComponents = preg_split("/(?:\r?\n){2}/", $response, 2);
         $body = null;
         for ($count = 0; 
                 $count < count($responseComponents) && $body == null; 
@@ -1372,7 +1744,7 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
             if($responseStatus != null && 
                     $this->_httpHeadersHaveContent($headers)){
                 
-                $responseHeaderMetadata = $this->_extractResponseHeaderMetadata(headers);
+                $responseHeaderMetadata = $this->_extractResponseHeaderMetadata($headers);
                 //The body will be the next item in the responseComponents array
                 $body = $responseComponents[++$count];
             }
@@ -1380,7 +1752,7 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
         
         //If the body is null here then we were unable to parse the response and will throw an exception
         if($body == null){
-            require_once(dirname(__FILE__) . '/Exception.php');
+            require_once (dirname(__FILE__) . '/Exception.php');
             $exProps["Message"] = "Failed to parse valid HTTP response (" . $response . ")";
             $exProps["ErrorType"] = "HTTP";
             throw new FBAInboundServiceMWS_Exception($exProps);
@@ -1542,7 +1914,7 @@ class FBAInboundServiceMWS_Client implements FBAInboundServiceMWS_Interface
         $signatureVersion = $parameters['SignatureVersion'];
         $algorithm = "HmacSHA1";
         $stringToSign = null;
-        if (2 === $signatureVersion) {
+        if (2 == $signatureVersion) {
             $algorithm = $this->_config['SignatureMethod'];
             $parameters['SignatureMethod'] = $algorithm;
             $stringToSign = $this->_calculateStringToSignV2($parameters);

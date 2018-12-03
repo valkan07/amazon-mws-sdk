@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2014 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2018 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,15 +13,15 @@
  * @category Amazon
  * @package  FBA Inbound Service MWS
  * @version  2010-10-01
- * Library Version: 2014-09-30
- * Generated: Fri Nov 21 18:21:09 GMT 2014
+ * Library Version: 2016-10-05
+ * Generated: Thu Nov 08 11:45:48 PST 2018
  */
 
 /**
  *  @see FBAInboundServiceMWS_Model
  */
 
-require_once(dirname(__FILE__) . '/../Model.php');
+require_once (dirname(__FILE__) . '/../Model.php');
 
 
 /**
@@ -31,6 +31,7 @@ require_once(dirname(__FILE__) . '/../Model.php');
  * <ul>
  * 
  * <li>PackageList: FBAInboundServiceMWS_Model_PartneredSmallParcelPackageInputList</li>
+ * <li>CarrierName: string</li>
  *
  * </ul>
  */
@@ -41,6 +42,7 @@ require_once(dirname(__FILE__) . '/../Model.php');
     {
     $this->_fields = array (
     'PackageList' => array('FieldValue' => null, 'FieldType' => 'FBAInboundServiceMWS_Model_PartneredSmallParcelPackageInputList'),
+    'CarrierName' => array('FieldValue' => null, 'FieldType' => 'string'),
     );
     parent::__construct($data);
     }
@@ -88,6 +90,52 @@ require_once(dirname(__FILE__) . '/../Model.php');
     public function withPackageList($value)
     {
         $this->setPackageList($value);
+        return $this;
+    }
+
+    /**
+     * Get the value of the CarrierName property.
+     *
+     * @return String CarrierName.
+     */
+    public function getCarrierName()
+    {
+        return $this->_fields['CarrierName']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the CarrierName property.
+     *
+     * @param string carrierName
+     * @return this instance
+     */
+    public function setCarrierName($value)
+    {
+        $this->_fields['CarrierName']['FieldValue'] = $value;
+        return $this;
+    }
+
+    /**
+     * Check to see if CarrierName is set.
+     *
+     * @return true if CarrierName is set.
+     */
+    public function isSetCarrierName()
+    {
+                return !is_null($this->_fields['CarrierName']['FieldValue']);
+            }
+
+    /**
+     * Set the value of CarrierName, return this.
+     *
+     * @param carrierName
+     *             The new value to set.
+     *
+     * @return This instance.
+     */
+    public function withCarrierName($value)
+    {
+        $this->setCarrierName($value);
         return $this;
     }
 

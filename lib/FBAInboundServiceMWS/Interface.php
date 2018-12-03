@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2014 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2018 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,12 +13,32 @@
  * @category Amazon
  * @package  FBA Inbound Service MWS
  * @version  2010-10-01
- * Library Version: 2014-09-30
- * Generated: Fri Nov 21 18:21:09 GMT 2014
+ * Library Version: 2016-10-05
+ * Generated: Thu Nov 08 11:45:48 PST 2018
  */
 
 interface  FBAInboundServiceMWS_Interface
 {
+
+    /**
+     * Confirm Preorder
+     * Given a shipment id. and date as input, this API confirms a shipment as a
+     * pre-order.
+     * This date must be the same as the NeedByDate (NBD) that is returned in the
+     * GetPreorderInfo API. Any other date will result in an appropriate error code.
+     * All items in the shipment with a release date on or after the
+     * ConfirmedFulfillableDate ( also returned by the GetPreorderInfo  API) would
+     * be pre-orderable on the website and would be fulfilled without promise breaks,
+     * if the NBD is met.
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_ConfirmPreorder request or FBAInboundServiceMWS_Model_ConfirmPreorder object itself
+     * @see FBAInboundServiceMWS_Model_ConfirmPreorderRequest
+     * @return FBAInboundServiceMWS_Model_ConfirmPreorderResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function confirmPreorder($request);
+
 
     /**
      * Confirm Transport Request
@@ -100,6 +120,34 @@ interface  FBAInboundServiceMWS_Interface
 
 
     /**
+     * Get Inbound Guidance For ASIN
+     * Given a list of ASINs and shipToCountryCode, this API returns Inbound
+     *      guidance to ASINs in request with optional reason code if applicable.
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetInboundGuidanceForASIN request or FBAInboundServiceMWS_Model_GetInboundGuidanceForASIN object itself
+     * @see FBAInboundServiceMWS_Model_GetInboundGuidanceForASINRequest
+     * @return FBAInboundServiceMWS_Model_GetInboundGuidanceForASINResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function getInboundGuidanceForASIN($request);
+
+
+    /**
+     * Get Inbound Guidance For SKU
+     * Given a list of SKUs and shipToCountryCode, this API returns Inbound
+     *      guidance to SKUs in request with optional reason code if applicable.
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetInboundGuidanceForSKU request or FBAInboundServiceMWS_Model_GetInboundGuidanceForSKU object itself
+     * @see FBAInboundServiceMWS_Model_GetInboundGuidanceForSKURequest
+     * @return FBAInboundServiceMWS_Model_GetInboundGuidanceForSKUResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function getInboundGuidanceForSKU($request);
+
+
+    /**
      * Get Package Labels
      * Retrieves the PDF-formatted package label data for the packages of the
      *     shipment. These labels will include relevant data for shipments utilizing 
@@ -114,7 +162,7 @@ interface  FBAInboundServiceMWS_Interface
      *       * US non-partnered UPS: PackageLabel_Letter_6
      *       * US partnered-UPS: PackageLabel_Letter_2
      *       * GB, DE, FR, IT, ES: PackageLabel_A4_4, PackageLabel_Plain_Paper
-     *       * Partnered EU: ? <!-- TODO: define this -->
+     *       * Partnered EU: PackageLabel_A4_2
      *       * JP/CN: PackageLabel_Plain_Paper
      *
      * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPackageLabels request or FBAInboundServiceMWS_Model_GetPackageLabels object itself
@@ -124,6 +172,44 @@ interface  FBAInboundServiceMWS_Interface
      * @throws FBAInboundServiceMWS_Exception
      */
     public function getPackageLabels($request);
+
+
+    /**
+     * Get Pallet Labels
+     * Retrieves the PDF-formatted pallet label data for the pallets in an LTL shipment. These labels
+     *     include relevant data for shipments being sent to Amazon Fulfillment Centers. The PDF data will be 
+     *     ZIP'd and then it will be encoded as a Base64 string, and MD5 hash is included with the response to 
+     *     validate the label data which will be encoded as Base64. The language of the address and FC prep 
+     *     instructions sections of the labels are determined by the marketplace in which the request is being 
+     *     made and the marketplace of the destination FC, respectively.
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPalletLabels request or FBAInboundServiceMWS_Model_GetPalletLabels object itself
+     * @see FBAInboundServiceMWS_Model_GetPalletLabelsRequest
+     * @return FBAInboundServiceMWS_Model_GetPalletLabelsResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function getPalletLabels($request);
+
+
+    /**
+     * Get Preorder Info
+     * Given a shipment id. as input, based on the release date of the items in the
+     * shipment, this API returns the suggested need By Date that the shipment items
+     * must reach Amazon FC to successfully fulfill Pre-Orders without any promise
+     * breaks.
+     * This API also returns the confirmed Fullfillable date. All items in the
+     * shipment that have a release date on or after this date would have the
+     * pre-order buy box show up on the detail page if this shipment is marked as a
+     * pre-orderable.
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPreorderInfo request or FBAInboundServiceMWS_Model_GetPreorderInfo object itself
+     * @see FBAInboundServiceMWS_Model_GetPreorderInfoRequest
+     * @return FBAInboundServiceMWS_Model_GetPreorderInfoResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function getPreorderInfo($request);
 
 
     /**
@@ -189,6 +275,35 @@ interface  FBAInboundServiceMWS_Interface
      * @throws FBAInboundServiceMWS_Exception
      */
     public function getTransportContent($request);
+
+
+    /**
+     * Get Unique Package Labels
+     * Retrieves the PDF-formatted package label data for the packages of the
+     *     shipment. These labels will include relevant data for shipments utilizing 
+     *     Amazon-partnered carriers. Each label contains a unique package identifier that represents the mapping between
+     *     physical and virtual packages. This API requires that Carton Information has been provided for all packages in the
+     *     shipment. The PDF data will be ZIP'd and then it will be encoded as a Base64 string, and
+     *     MD5 hash is included with the response to validate the label data which will be encoded as Base64.
+     *     The language of the address and FC prep instructions sections of the labels are
+     *     determined by the marketplace in which the request is being made and the marketplace of
+     *     the destination FC, respectively.
+     *     
+     *     Only select PageTypes are supported in each marketplace. By marketplace, the
+     *     supported types are:
+     *       * US non-partnered UPS: PackageLabel_Letter_6
+     *       * US partnered-UPS: PackageLabel_Letter_2
+     *       * GB, DE, FR, IT, ES: PackageLabel_A4_4, PackageLabel_Plain_Paper
+     *       * Partnered EU: PackageLabel_A4_2
+     *       * JP/CN: PackageLabel_Plain_Paper
+     *
+     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetUniquePackageLabels request or FBAInboundServiceMWS_Model_GetUniquePackageLabels object itself
+     * @see FBAInboundServiceMWS_Model_GetUniquePackageLabelsRequest
+     * @return FBAInboundServiceMWS_Model_GetUniquePackageLabelsResponse
+     *
+     * @throws FBAInboundServiceMWS_Exception
+     */
+    public function getUniquePackageLabels($request);
 
 
     /**
